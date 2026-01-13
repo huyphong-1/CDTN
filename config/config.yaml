@@ -1,0 +1,23 @@
+db:
+  server: DESKTOP-6ALJGQI\SQLEXPRESS
+  database: DWH_FULL_DATA
+  driver: ODBC Driver 17 for SQL Server
+  trusted_connection: true
+
+training:
+  horizon_days: 7
+  train_ratio: 0.8
+  embargo_days: 7
+
+scope:
+  product_groups:
+    - Fashion
+    - Core Merchandise
+
+revenue:
+  mode: net
+  min_train_quarters: 4
+
+inventory:
+  forecast_quarters: 4
+  min_train_quarters: 4

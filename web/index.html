@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ML Charts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap">
+        <h1>ML Dashboard</h1>
+        <p class="sub">Local charts and tables for revenue and inventory.</p>
+      </div>
+    </header>
+
+    <nav class="tabs" role="tablist">
+      <button class="tab is-active" role="tab" aria-selected="true" data-tab="revenue">Revenue</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="inventory">Inventory</button>
+    </nav>
+
+    <main class="wrap">
+      <section class="panel is-active" id="tab-revenue" role="tabpanel" aria-label="Revenue">
+        <div class="section">
+          <h2>Revenue Charts</h2>
+          <div class="chart-grid">
+            <figure>
+              <img src="./outputs/revenue_actual_quarterly.png" alt="Revenue actual quarterly" />
+              <figcaption>Actual revenue by quarter</figcaption>
+            </figure>
+            <figure>
+              <img src="./outputs/revenue_actual_vs_pred_backtest.png" alt="Revenue actual vs predicted" />
+              <figcaption>Actual vs predicted (backtest)</figcaption>
+            </figure>
+            <figure>
+              <img src="./outputs/revenue_predicted_vs_actual.png" alt="Revenue predicted vs actual scatter" />
+              <figcaption>Predicted vs actual (scatter)</figcaption>
+            </figure>
+            <figure>
+              <img src="./outputs/revenue_forecast_quarterly.png" alt="Revenue forecast" />
+              <figcaption>Forecast</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Revenue Metrics</h2>
+          <div class="table-wrap" data-table="revenue-metrics"></div>
+        </div>
+
+        <div class="section">
+          <h2>Revenue Backtest</h2>
+          <div class="table-wrap" data-table="revenue-backtest"></div>
+        </div>
+      </section>
+
+      <section class="panel" id="tab-inventory" role="tabpanel" aria-label="Inventory">
+        <div class="section">
+          <h2>Inventory Charts</h2>
+          <div class="chart-grid">
+            <figure>
+              <img src="./outputs/inventory_actual_quarterly.png" alt="Inventory actual quarterly" />
+              <figcaption>Actual inventory by quarter</figcaption>
+            </figure>
+            <figure>
+              <img src="./outputs/inventory_actual_vs_pred_backtest.png" alt="Inventory actual vs predicted" />
+              <figcaption>Actual vs predicted (backtest)</figcaption>
+            </figure>
+            <figure>
+              <img src="./outputs/inventory_forecast_quarterly.png" alt="Inventory forecast" />
+              <figcaption>Forecast</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Inventory Metrics</h2>
+          <div class="table-wrap" data-table="inventory-metrics"></div>
+        </div>
+
+        <div class="section">
+          <h2>Inventory Backtest</h2>
+          <div class="table-wrap" data-table="inventory-backtest"></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
