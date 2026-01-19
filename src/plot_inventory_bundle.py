@@ -1,4 +1,3 @@
-# src/plot_inventory_bundle.py
 from __future__ import annotations
 
 from pathlib import Path
@@ -33,7 +32,6 @@ def savefig(path: Path):
 
 
 def main():
-    # ========= (1) Actual full =========
     if not ACTUAL_Q_PATH.exists() or ACTUAL_Q_PATH.stat().st_size == 0:
         raise FileNotFoundError(
             f"Missing {ACTUAL_Q_PATH}. Run: python src/backtest_inventory_quarterly.py"
@@ -57,7 +55,6 @@ def main():
     plt.grid(True, alpha=0.25)
     savefig(OUT_DIR / "inventory_actual_quarterly.png")
 
-    # ========= (2) Backtest actual vs pred =========
     if not BACKTEST_PATH.exists() or BACKTEST_PATH.stat().st_size == 0:
         raise FileNotFoundError(f"Missing {BACKTEST_PATH}. Run: python src/backtest_inventory_quarterly.py")
 
@@ -75,7 +72,6 @@ def main():
     bt["linear_pred"] = safe_num(bt["linear_pred"])
     bt = bt.sort_values("q").reset_index(drop=True)
 
-    # Use full actual series for x-axis so the chart has all quarter points.
     x_labels = actual["q"].astype(str)
     actual_series = actual["QuarterEndInventory"].to_numpy()
 
@@ -94,7 +90,6 @@ def main():
     plt.legend()
     savefig(OUT_DIR / "inventory_actual_vs_pred_backtest.png")
 
-    # ========= (3) Forecast =========
     if not FORECAST_PATH.exists() or FORECAST_PATH.stat().st_size == 0:
         raise FileNotFoundError(f"Missing {FORECAST_PATH}. Run: python src/train_inventory_linear.py")
 

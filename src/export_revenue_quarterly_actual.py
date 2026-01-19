@@ -1,4 +1,3 @@
-# src/export_revenue_quarterly_actual.py
 from __future__ import annotations
 
 import sys

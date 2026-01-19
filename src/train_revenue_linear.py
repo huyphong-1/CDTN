@@ -1,4 +1,3 @@
-# src/train_revenue_linear.py
 from __future__ import annotations
 
 from pathlib import Path

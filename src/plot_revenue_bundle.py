@@ -1,4 +1,3 @@
-# src/plot_revenue_bundle.py
 from __future__ import annotations
 
 import sys
@@ -38,7 +37,6 @@ def savefig(path: Path):
 
 
 def main():
-    # ========= (1) Actual full =========
     if not ACTUAL_Q_PATH.exists() or ACTUAL_Q_PATH.stat().st_size == 0:
         raise FileNotFoundError(
             f"Missing {ACTUAL_Q_PATH}. Run: python src/export_revenue_quarterly_actual.py"
@@ -62,7 +60,6 @@ def main():
     plt.grid(True, alpha=0.25)
     savefig(OUT_DIR / "revenue_actual_quarterly.png")
 
-    # ========= (2) Backtest actual vs pred =========
     if not BACKTEST_PATH.exists() or BACKTEST_PATH.stat().st_size == 0:
         raise FileNotFoundError(f"Missing {BACKTEST_PATH}. Run: python src/backtest_revenue_quarterly.py")
 
@@ -79,7 +76,6 @@ def main():
     bt["y_actual"] = safe_num(bt["y_actual"])
     bt = bt.sort_values("q").reset_index(drop=True)
 
-    # Use full actual series for x-axis so the chart has all quarter points.
     x_labels = actual["q"].astype(str)
     actual_series = actual["QuarterRevenue"].to_numpy()
 
@@ -102,7 +98,6 @@ def main():
     plt.legend()
     savefig(OUT_DIR / "revenue_actual_vs_pred_backtest.png")
 
-    # ========= (2b) Predicted vs Actual scatter =========
     pred_vals = safe_num(bt["linear_pred"])
     mask = bt["y_actual"].notna() & pred_vals.notna()
     x_scatter = bt.loc[mask, "y_actual"].to_numpy()
@@ -122,7 +117,6 @@ def main():
     else:
         print("WARN: no valid data for predicted vs actual scatter.")
 
-    # ========= (3) Forecast =========
     if not FORECAST_PATH.exists() or FORECAST_PATH.stat().st_size == 0:
         raise FileNotFoundError(f"Missing {FORECAST_PATH}. Run: python src/train_revenue_linear.py")
 

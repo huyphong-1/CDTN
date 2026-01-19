@@ -1,4 +1,3 @@
-# src/backtest_revenue_quarterly.py
 from __future__ import annotations
 
 import yaml
